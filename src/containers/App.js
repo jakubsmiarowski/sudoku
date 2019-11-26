@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Board from '../components/Board'
+import { hot } from 'react-hot-loader';
+import Board from '../components/Board/Board'
 import './App.css';
 import sudoku from 'sudoku-umd';
 
@@ -8,38 +9,98 @@ class App extends Component {
     super(props)
 
     this.state = {
-    initialBoard: '',
-    board: '',
-    level: '',
+      initialBoard: '',
+      board: '',
+      level: '',
+    }
   }
-}
 
+  newGame = () => {
+    const generate = sudoku.generate(this.state.level);
+    this.setState({
+      initialBoard: generate,
+      board: generate
+    })
+  }
 
+  solve = () => {
+    const board = this.state.board;
+    const solved = sudoku.solve(board);
+    if(solved) {
+      this.setState({ board: solved });
+    }else {
+      alert('There is something wrong');
+    }
+  }
+
+  check = () => {
+    const board = this.state.board;
+    const checked = sudoku.solve(board);
+    if ((board.indexOf('.')) > -1 && checked) {
+      alert('So far, so good :)')
+    } else if (board === checked) {
+      alert('Congratulations, you won!')
+    } else {
+      alert('Something is wrong, look for a mistake.')
+    }
+  }
+
+  reset = () => {
+    this.setState({ board: this.state.initialBoard });
+  }
+
+  handleChange = event => {
+    this.setState({ level: event.target.value });
+  }
+
+  handleInputValue = (event, id) => {
+    const inputId = event.target.id;
+    const inputValue = Number(event.target.value++);
+    const board = this.state.board;
+
+    const newArray = Object.assign([], board, {[inputId]: inputValue});
+
+    this.setState({
+      board: newArray.join("")
+    });
+  }
 
   render () {
     return(
       <div className="main">
-        <div className="title"></div>
+        
+        <div className="title">Sudoku</div>
 
-        <Board />
+        <div className="buttons">
+          <select 
+            className="select"
+            name='select'
+            onChange={this.handleChange}
+            value={this.state.level}
+          >
+              <option value="easy">easy</option>
+              <option value="medium">medium</option>
+              <option value="hard">hard</option>
+              <option value="very hard">very hard</option>
+              <option value="insane">insane</option>
+              <option value="inhuman">inhuman</option>
+          </select>
+          <button className="btn" onClick={this.newGame}>New Game</button>
+          <button className="btn" onClick={this.check}>Check</button>
+          <button className="btn" onClick={this.reset}>Reset</button>
+          <button className="btn" onClick={this.solve}>Solve</button>
+        </div>
 
-        <select className="select">
-            <option value="easy">easy</option>
-            <option value="medium">medium</option>
-            <option value="hard">hard</option>
-            <option value="very hard">very hard</option>
-            <option value="insane">insane</option>
-            <option value="inhuman">inhuman</option>
-        </select>
-        <button className="btn">New Game</button>
-        <button className="btn">Check</button>
-        <button className="btn">Undo</button>
-        <button className="btn">Reset</button>
-        <button className="btn">Solve</button>
+        <Board
+          board={this.state.board.split('')}
+          initialBoard={this.state.initialBoard.split('')}
+          onChange={this.handleInputValue}
+        />
+
       </div>
     );
   }
 }
 
 
-export default App;
+export default hot(module)(App);

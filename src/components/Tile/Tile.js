@@ -3,19 +3,18 @@ import './Tile.css';
 
 const Tile = props => {
 
-
-
     return (
-        <div className="field">
+        <>
             <input
-                id={}
+                id={props.id}
+                onChange={props.onChange}
+                value={props.value}
                 type="number"
                 min="1"
                 max="9"
-                onChange ={}
-                className={}
+                className={props.className}
             />
-        </div>
+        </>
     )
 }
 
