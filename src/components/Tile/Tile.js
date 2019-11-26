@@ -3,8 +3,6 @@ import './Tile.css';
 
 const Tile = props => {
 
-
-
     return (
         <>
             <input

@@ -9,11 +9,12 @@ class App extends Component {
     super(props)
 
     this.state = {
-    initialBoard: '',
-    board: '',
-    level: '',
+      initialBoard: '',
+      board: '',
+      level: '',
+    }
   }
-}
+
   newGame = () => {
     const generate = sudoku.generate(this.state.level);
     this.setState({
@@ -23,7 +24,8 @@ class App extends Component {
   }
 
   solve = () => {
-    const solved = sudoku.solve(this.state.board);
+    const board = this.state.board;
+    const solved = sudoku.solve(board);
     if(solved) {
       this.setState({ board: solved });
     }else {
@@ -39,13 +41,12 @@ class App extends Component {
     } else if (board === checked) {
       alert('Congratulations, you won!')
     } else {
-      alert('You chose, poorly')
+      alert('Something is wrong, look for a mistake.')
     }
   }
 
   reset = () => {
-    const resetState = (this.state.board = this.state.initialBoard);
-    this.setState({ board: resetState });
+    this.setState({ board: this.state.initialBoard });
   }
 
   handleChange = event => {
@@ -91,7 +92,6 @@ class App extends Component {
         </div>
 
         <Board
-          onSubmit={this.handleChange}
           board={this.state.board.split('')}
           initialBoard={this.state.initialBoard.split('')}
           onChange={this.handleInputValue}

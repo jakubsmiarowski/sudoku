@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
@@ -55,12 +56,30 @@ body {
     font-size: 20px;
     background-color: #3498db;
     color: #fff;
-    border: 1px solid #3498db;
+    border: 2px solid #3498db;
     text-transform: uppercase;
     transition: 0.2s ease-in-out;
 }
 
-button:hover {
-    background-color: #3498db;
-    color: #fff;
+.btn:hover {
+    background-color: #fff;
+    color: #3498db;
+}
+
+@media screen and (max-width: 767px) {
+    .body {
+        overflow: visible;
+    }
+    .buttons {
+        flex-wrap: wrap;
+    }
+    .select {
+        margin: 20px;
+        width: 150px;
+    }
+    .btn {
+        margin: 20px 10px;
+        width: 120px;
+        font-size: 16px;
+    }
 }
