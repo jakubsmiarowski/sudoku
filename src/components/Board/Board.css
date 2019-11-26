@@ -1,0 +1,19 @@
+.board {
+    width: 600px;
+    height: 500px;
+    margin: 0 auto;
+    display: flex;
+    color: #000;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 5;
+}
+
+.enabled {
+    background: #B7E5FA;
+}
+
+.disabled {
+    background: #5BC5F3;
+}
