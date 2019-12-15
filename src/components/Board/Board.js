@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Board.css';
 import Tile from '../Tile/Tile';
 
-const Board = (props, variant) => {
-
-    const [disabled, setDisabled] = useState(variant ? true : false);
-    function disableTile() {
-        setDisabled(!disabled);
-    }
+const Board = (props) => {
 
     return(
         <div className="board">
