@@ -1,5 +1,5 @@
 ### React Sudoku Game 
-[Netlify Deploy] (https://goofy-curie-6029e2.netlify.com/)
+[Heroku Deploy] (https://sudoku-j.herokuapp.com/)
 
 ## Installation
 In order to setup and run the app locally you have to:
