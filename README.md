@@ -1,19 +1,15 @@
-### React Sudoku Game 
-[Heroku Deploy] (https://sudoku-j.herokuapp.com/)
+### React Sudoku Game
+
+[Heroku Deploy](https://sudoku-j.herokuapp.com/)
 
 ## Installation
+
 In order to setup and run the app locally you have to:
 
 1. Clone or download this repository
 2. Run `npm / yarn install`
 3. Run `npm / yarn client:start`
 4. Open a browser and navigate to `http://localhost:3000`
-
-
-
-
-
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -43,3 +39,16 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Project Overview
+
+This Sudoku project was an additional task so it's mostly improvisation work. I was told to use Sudoku-umd library for it to generate 81 tiles. The library also gives the difficulty level and so the main task was simply to create working game board on the client side.
+
+## Technical Details
+
+1. React
+2. Sudoku-umd library
+
+## Personal Growth
+
+It was interesting to do this game. Even though I didn't really create the logics of it, that was challenging thing to do. Unfortunately I wasn't able to create it 100% as I wanted it too. The problem that I have is when you try to type two digits with your keyboard. Game creates new Tiles which ultimately bugs the game. Hopefully, when I gain more experience and proficiency in JavaScript I will be able to tackle this issue.
